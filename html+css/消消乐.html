@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>消消乐</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+		body {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+		}
+		.main {
+			display: flex;
+			flex-wrap: wrap;
+			/* float: right; */
+		}
+		.cols {
+			display: flex;
+			flex-direction: column-reverse;
+		}
+		.item {
+			display: flex;
+			position: relative;
+			user-select: none;
+			border-radius: 100%;
+			overflow: hidden;
+			transition: transform .2s, height .2s;
+			border: 1px solid;
+		}
+		.img {
+			background: no-repeat center center;
+			background-size: 100%;
+			pointer-events: none;
+			flex: 1
+		}
+		.bg {
+			position: absolute;
+			background-color: rgba(0, 0, 0, 0.5);
+			width: 20px;
+			height: 20px;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			display: none;
+		}
+		.small {
+			transform: scale(0.8);
+		}
+		.small-ok {
+			transform: scale(0);
+		}
+		.small-ok-two {
+			height: 0 !important;
+		}
+		.add-hide {
+			transform: scale(0);
+		}
+		.active .bg {
+			display: block;
+		}
+		.active  {
+			opacity: 0.5;
+		}
+	</style>
+</head>
+<body>
+	<div>当前得分：<label id="score">0</label></div>
+	<div class="main"></div>
+</body>
+<script>
+	const main = document.querySelector('.main')
+	const score = document.querySelector('#score')
+	const simpleData = Array.from(new Array(5)).map((v, i) => {
+		return {
+			id: i,
+			url: `./images/llk/${i+1}.png`
+		}
+	})
+  // 列数
+	const cols = 6
+  // 行数
+	const rows = 8
+  // 水果盒子大小
+	const size = 50
+  // 最低多少个可以消除
+	const clearCount = 3
+  // 关卡数量
+	const group = 200
+  // 定义水果数据
+	const renderData = Array.from(new Array(group))
+		.map(v => simpleData).flat().sort(v => Math.random() - 0.5)
+	const renderHtml = []
+	const getItem = (item, isElement) => {
+		const html =  `<div class="item ${isElement ? 'add-hide' : ''}" data-v="${item.id}" style="width:${size}px;height:${size}px;">
+					<div class="img" style="background-image:url(${item.url});"></div>
+					<div class="bg"></div>
+				</div>`
+    // 当需要dom节点时 则生成dom节点并插入
+		if (isElement) {
+			const el = document.createElement('div')
+			el.innerHTML = html
+			const itemEl = el.children[0]
+      // 移除初始生成动画
+			setTimeout(() => {
+				itemEl.classList.remove('add-hide')
+			})
+			bindEvent(itemEl)
+			return itemEl
+		}
+		return html
+	}
+	for(let i=0;i<cols;i++) {
+		const rowsHtml = [`<div class="cols" data-col="${i}">`]
+		for(let j=0;j<rows;j++) {
+      // 从池子中取水果-最后面删除一个
+			const item = renderData.pop()
+			if (item) {
+				rowsHtml.push(getItem(item))
+			}
+		}
+		rowsHtml.push('</div>')
+		renderHtml.push(rowsHtml.join(''))
+	}
+	main.innerHTML = renderHtml.join('')
+	main.style.width = `${cols * size}px`
+
+	let isDrag
+  // 判断是否移动端
+	const isMobile = navigator.userAgent.match(/Mobile/)
+
+	const bindEvent = (v) => {
+		v[isMobile ? 'ontouchstart':'onmousedown'] = () => {
+			v.classList.add('active')
+			isDrag = true
+		}
+    // 事件在鼠标指针移动到元素上时触发。
+		v.onmouseenter = () => {
+			if (isDrag) {
+				v.classList.add('active')
+			}
+		}
+    // 移动端手指移动事件
+		v.ontouchmove = (evt) =>{
+			const e = evt.touches[0]
+			if (isDrag) {
+				const x = e.pageX - main.offsetLeft
+				const y = e.pageY - main.offsetTop
+        
+        // 获取元素半径
+				const r = size / 2
+        
+        // 计算移动的点是否在元素中心区域 -也就是是否在元素上
+				const a = Math.abs(x % size - r)
+				const b = Math.abs(y % size - r)
+				const c = Math.sqrt(a * a + b * b)
+				if (c < r) {
+					const xV = Math.ceil(x / size)
+					const yV = Math.ceil(y / size) - 1
+					const item = main.querySelector(`.cols:nth-child(${xV}) .item:nth-child(${rows - yV})`)
+					item && item.classList.add('active')
+				}
+			}
+		}
+    // 移动结束事件
+		v[isMobile?'ontouchend':'onmouseup'] = async () => {
+			isDrag = false
+      // 找出所有选中的元素
+			const list = [...main.querySelectorAll('.active')]
+      // 判断选中的元素id是否和绑定id是否完全一致-也就是是否一个水果
+			const result = list.every((el) => {
+				return el.getAttribute('data-v') === v.getAttribute('data-v')
+			})
+      // 当是一种水果并且大于设定的最小值这说明满足消除条件-则删除并新增新的
+			if (result && list.length >= clearCount) {
+				list.forEach(async v => {
+					v.classList.remove('active')
+					v.classList.add('small-ok')
+					v.ontransitionend = (e) => {
+            // 当发生transitionend事件时，propertyName属性返回与转换关联的CSS属性的名称。此属性是只读的。
+            // 说明发生了高度变化动画-也就是消除成功
+						if (e.propertyName === 'height') {
+							const item = renderData.pop()
+							if (item) {
+								v.parentElement.appendChild(getItem(item, true))
+							}
+							v.parentElement.removeChild(v)
+							score.innerHTML = parseInt(score.innerHTML) + 1
+						} else if (e.propertyName === 'transform') {
+							v.classList.add('small-ok-two')
+						}
+					}
+				})
+			} else {
+        // 没有满足消除条件则移除选中状态并还原
+				list.forEach(v => {
+					v.classList.remove('active')
+					v.classList.add('small')
+					v.ontransitionend = (e) => {
+            // 当发生transitionend事件时，propertyName属性返回与转换关联的CSS属性的名称。此属性是只读的。
+						if (e.propertyName === 'transform') {
+							v.classList.remove('small')
+						}
+					}
+				})
+			}
+		}
+	}
+	main.querySelectorAll('.item').forEach(v => {
+		bindEvent(v)
+	})
+	document.onmouseup = () => {
+		const item = document.querySelector('.active')
+		if (item) {
+			item.onmouseup()
+		}
+	}
+  // 阻击浏览器的默认行为-移动端拖拉效果
+	document.addEventListener('touchmove', function(e){e.preventDefault()},  { passive: false });
+</script>
+</html>

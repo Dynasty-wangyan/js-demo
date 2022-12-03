@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>postMessage parent</title>
+</head>
+
+<body>
+    <h1>parent</h1>
+    <button id="btn">获取iframe信息</button> <button onclick="openPage()">打开新页面</button>
+    <br><br>
+    <iframe src="./42-1.html" id="iframe1"></iframe>
+</body>
+<script src="./common/postMessage.js"></script>
+<script>
+    const iframe1 = document.getElementById('iframe1')
+    new PostMessage().create(iframe1).then((sdk) => {
+        sdk.register('getUserInfo', () => {
+            return {
+                id: 1,
+                name: '小明',
+                phone: '19999999999'
+            }
+        })
+        document.getElementById('btn').onclick = () => {
+            sdk.postIframe('getMore', {a: 1}).then(res => {
+                console.log(res)
+            })
+        }
+    })
+    
+    // iframe1.onload = () => {
+    //     window.addEventListener("message", evt => {
+    //         const { type, data } = evt.data
+    //         if (type === 'getUserInfo') {
+    //             iframe1.contentWindow.postMessage({
+    //                 type: 'getUserInfo',
+    //                 data: {
+    //                     id: 1,
+    //                     name: '小明',
+    //                     phone: '19999999999'
+    //                 }
+    //             }, iframe1.src)
+    //         } else if (type === 'getMore') {
+    //             console.log(data)
+    //         }
+    //     }, false)
+    //     document.getElementById('btn').onclick = () => {
+    //         iframe1.contentWindow.postMessage({
+    //             type: 'getMore',
+    //             data: {
+    //                 a: 1
+    //             }
+    //         }, iframe1.src)
+    //     }
+    //     iframe1.contentWindow.postMessage({
+    //         type: 'sendUrl',
+    //         data: location.href
+    //     }, iframe1.src)
+    // }
+</script>
+
+</html>
