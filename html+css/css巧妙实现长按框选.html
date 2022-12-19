@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css巧妙实现长按框选</title>
+</head>
+<style>
+  body {
+    margin: 50px;
+    counter-reset: num;
+  }
+
+  .box {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    background-color: gray;
+  }
+
+  .box::after {
+    counter-increment: num;
+    content: counter(num);
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  }
+
+  .box.active {
+    background-color: skyblue;
+  }
+
+  .box:hover:active {
+    opacity: .99;
+    transition: opacity .35s;
+    /**长按时长**/
+  }
+
+  /** 
+  这里有详细描述
+https://github.com/XboxYan/notes/issues/4 
+**/
+</style>
+
+<body>
+
+  <script>
+    var fragment = document.createDocumentFragment();
+    //便于测试，这里生成了200个
+    for (var i = 0; i < 200; i++) {
+      var box = document.createElement('div');
+      box.className = 'box';
+      box.draggable = false;
+      box.setAttribute('data-id', i)
+      fragment.appendChild(box)
+    }
+    document.body.appendChild(fragment);
+
+    document.addEventListener('transitionend', longclick);
+
+    document.addEventListener('mouseup', handleup);
+
+    document.addEventListener('touchend', handleup);
+
+    var start = [];
+
+    function longclick(ev) {
+      if (ev.target.className.includes('box')) {
+        ev.target.classList.add('active');
+        document.addEventListener('mousemove', handlemove);
+        document.addEventListener('touchmove', handlemove);
+      }
+    }
+
+    function handleup(ev) {
+      if (start.length) {
+        start.length = 0;
+      } else {
+        if (!ev.target.className.includes('box')) {
+          clear();
+        }
+      }
+      window.getSelection().removeAllRanges();
+      document.removeEventListener('mousemove', handlemove);
+      document.removeEventListener('touchmove', handlemove);
+    }
+
+    function handlemove(ev) {
+      var ev = ev.touches && ev.touches[0] || ev;
+      if (!start.length) {
+        start = [ev.pageX, ev.pageY];
+      }
+      document.querySelectorAll('.box').forEach(function(el) {
+        var _x = Math.min(start[0], ev.pageX);
+        var _y = Math.min(start[1], ev.pageY);
+        var _l = Math.max(start[0], ev.pageX);
+        var _t = Math.max(start[1], ev.pageY);
+        // var rect = el.getBoundingClientRect();
+        var $w = el.offsetWidth;
+        var $h = el.offsetHeight;
+        var $x = el.offsetLeft;
+        var $y = el.offsetTop;
+        var $l = $x + $w;
+        var $t = $y + $h;
+        if ($l - $w < _l && $l > _x && $t - $h <= _t && $t >= _y) {
+          el.classList.add('active');
+        } else {
+          el.classList.remove('active');
+        }
+      })
+    }
+
+    function clear() {
+      document.querySelectorAll('.box').forEach(function(el) {
+        el.classList.remove('active');
+      })
+    }
+  </script>
+</body>
+
+</html>

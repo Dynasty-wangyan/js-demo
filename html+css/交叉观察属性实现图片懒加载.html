@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intersection Observer</title>
+  <style>
+     * {
+       padding: 0;
+       margin: 0;
+     }
+     img {
+       width: 100vw;
+       height: auto;
+     }
+     .content {
+      border: 1px solid #eee;
+     }
+  </style>
+</head>
+<body>
+   <div class="content">
+    <style contenteditable style="
+        display:block;
+        white-space: pre;
+        width: 90%;
+        -webkit-user-modify: read-write-plaintext-only;
+
+    ">
+     * {
+      transition: all 0.2;
+     }
+     body{
+        background: red;
+     }
+    </style>
+   </div>
+   <p>　　There are many apple trees in a garden. They’re good friends. One day an old tree is ill. There are many pests in the tree. Leaves of the tree turn yellow. The old tree feels very sad and unwell. Another tree sends for a doctor for him. At first, they send for a pigeon, but she has no idea about it. Then they send for an oriole, and she can’t treat the old tree well. Then they send for a woodpecker. She is a good doctor. She pecks a hole in the tree and eats lots of pests. At last the old tree becomes better and better. Leaves turn green and green.</p>
+   <p>　　Today is Sunday! On Sundays, I usually play the flute.My father usually reads the newspaper. My motherusuallycleansthe house. Buttoday my mother is in bed. She is ill. My father has to do the housework. Now, he is cleaning the house. “Sam, can you help me?” “Yes, Dad!” Now, we’re washing the car. Where’s my sister, Amy? She is playing my flute. What a lucky girl!</p>
+   <p>　　One day a dog with a piece of meat in his mouth was crossing a plank over a stream. As he walked along,helookedintowater,andhesawhis reflection. He thought this was another dog carrying</p>
+   <p>　　a piece of meat. And he felt he would like to have two pieces. So he snapped at the reflection in the water, and of course, as he opened his mouth, the piece of meat disappeared quickly.</p>
+   <p>　　Tony is seven years old. He is an honest and polite boy. One day, it was Sunday. Tony, his sister and his mother stayed at home. He was watching TV and his sister was reading books. His mother was washing clothes. Just then, his father came back with a bag</p>
+   <p>　　to eat one. His mother gave him four and said, “Let’s sharethem.” “Whichpeardo youwant, Tony?” asked his mother. “The biggest one, mum.” “What?” said his mother, “You should be polite and want the smallest one.” “Should I tell a lie just to be polite, mum?”</p>
+   <p>　　There are many apple trees in a garden. They’re good friends. One day an old tree is ill. There are many pests in the tree. Leaves of the tree turn yellow. The old tree feels very sad and unwell. Another tree sends for a doctor for him. At first, they send for a pigeon, but she has no idea about it. Then they send for an oriole, and she can’t treat the old tree well. Then they send for a woodpecker. She is a good doctor. She pecks a hole in the tree and eats lots of pests. At last the old tree becomes better and better. Leaves turn green and green.</p>
+   <p>　　Today is Sunday! On Sundays, I usually play the flute.My father usually reads the newspaper. My motherusuallycleansthe house. Buttoday my mother is in bed. She is ill. My father has to do the housework. Now, he is cleaning the house. “Sam, can you help me?” “Yes, Dad!” Now, we’re washing the car. Where’s my sister, Amy? She is playing my flute. What a lucky girl!</p>
+   <p>　　One day a dog with a piece of meat in his mouth was crossing a plank over a stream. As he walked along,helookedintowater,andhesawhis reflection. He thought this was another dog carrying</p>
+   <p>　　a piece of meat. And he felt he would like to have two pieces. So he snapped at the reflection in the water, and of course, as he opened his mouth, the piece of meat disappeared quickly.</p>
+   <p>　　Tony is seven years old. He is an honest and polite boy. One day, it was Sunday. Tony, his sister and his mother stayed at home. He was watching TV and his sister was reading books. His mother was washing clothes. Just then, his father came back with a bag</p>
+   <p>　　to eat one. His mother gave him four and said, “Let’s sharethem.” “Whichpeardo youwant, Tony?” asked his mother. “The biggest one, mum.” “What?” said his mother, “You should be polite and want the smallest one.” “Should I tell a lie just to be polite, mum?”</p>
+   <p>　　There are many apple trees in a garden. They’re good friends. One day an old tree is ill. There are many pests in the tree. Leaves of the tree turn yellow. The old tree feels very sad and unwell. Another tree sends for a doctor for him. At first, they send for a pigeon, but she has no idea about it. Then they send for an oriole, and she can’t treat the old tree well. Then they send for a woodpecker. She is a good doctor. She pecks a hole in the tree and eats lots of pests. At last the old tree becomes better and better. Leaves turn green and green.</p>
+   <p>　　Today is Sunday! On Sundays, I usually play the flute.My father usually reads the newspaper. My motherusuallycleansthe house. Buttoday my mother is in bed. She is ill. My father has to do the housework. Now, he is cleaning the house. “Sam, can you help me?” “Yes, Dad!” Now, we’re washing the car. Where’s my sister, Amy? She is playing my flute. What a lucky girl!</p>
+   <p>　　One day a dog with a piece of meat in his mouth was crossing a plank over a stream. As he walked along,helookedintowater,andhesawhis reflection. He thought this was another dog carrying</p>
+   <p>　　a piece of meat. And he felt he would like to have two pieces. So he snapped at the reflection in the water, and of course, as he opened his mouth, the piece of meat disappeared quickly.</p>
+   <p>　　Tony is seven years old. He is an honest and polite boy. One day, it was Sunday. Tony, his sister and his mother stayed at home. He was watching TV and his sister was reading books. His mother was washing clothes. Just then, his father came back with a bag</p>
+   <p>　　to eat one. His mother gave him four and said, “Let’s sharethem.” “Whichpeardo youwant, Tony?” asked his mother. “The biggest one, mum.” “What?” said his mother, “You should be polite and want the smallest one.” “Should I tell a lie just to be polite, mum?”</p>
+   <p>　　There are many apple trees in a garden. They’re good friends. One day an old tree is ill. There are many pests in the tree. Leaves of the tree turn yellow. The old tree feels very sad and unwell. Another tree sends for a doctor for him. At first, they send for a pigeon, but she has no idea about it. Then they send for an oriole, and she can’t treat the old tree well. Then they send for a woodpecker. She is a good doctor. She pecks a hole in the tree and eats lots of pests. At last the old tree becomes better and better. Leaves turn green and green.</p>
+   <p>　　Today is Sunday! On Sundays, I usually play the flute.My father usually reads the newspaper. My motherusuallycleansthe house. Buttoday my mother is in bed. She is ill. My father has to do the housework. Now, he is cleaning the house. “Sam, can you help me?” “Yes, Dad!” Now, we’re washing the car. Where’s my sister, Amy? She is playing my flute. What a lucky girl!</p>
+   <p>　　One day a dog with a piece of meat in his mouth was crossing a plank over a stream. As he walked along,helookedintowater,andhesawhis reflection. He thought this was another dog carrying</p>
+   <p>　　a piece of meat. And he felt he would like to have two pieces. So he snapped at the reflection in the water, and of course, as he opened his mouth, the piece of meat disappeared quickly.</p>
+   <p>　　There are many apple trees in a garden. They’re good friends. One day an old tree is ill. There are many pests in the tree. Leaves of the tree turn yellow. The old tree feels very sad and unwell. Another tree sends for a doctor for him. At first, they send for a pigeon, but she has no idea about it. Then they send for an oriole, and she can’t treat the old tree well. Then they send for a woodpecker. She is a good doctor. She pecks a hole in the tree and eats lots of pests. At last the old tree becomes better and better. Leaves turn green and green.</p>
+   <p>　　Today is Sunday! On Sundays, I usually play the flute.My father usually reads the newspaper. My motherusuallycleansthe house. Buttoday my mother is in bed. She is ill. My father has to do the housework. Now, he is cleaning the house. “Sam, can you help me?” “Yes, Dad!” Now, we’re washing the car. Where’s my sister, Amy? She is playing my flute. What a lucky girl!</p>
+   <p>　　One day a dog with a piece of meat in his mouth was crossing a plank over a stream. As he walked along,helookedintowater,andhesawhis reflection. He thought this was another dog carrying</p>
+   <p>　　a piece of meat. And he felt he would like to have two pieces. So he snapped at the reflection in the water, and of course, as he opened his mouth, the piece of meat disappeared quickly.</p>
+   <p>　　Tony is seven years old. He is an honest and polite boy. One day, it was Sunday. Tony, his sister and his mother stayed at home. He was watching TV and his sister was reading books. His mother was washing clothes. Just then, his father came back with a bag</p>
+   <p>　　to eat one. His mother gave him four and said, “Let’s sharethem.” “Whichpeardo youwant, Tony?” asked his mother. “The biggest one, mum.” “What?” said his mother, “You should be polite and want the smallest one.” “Should I tell a lie just to be polite, mum?”</p>
+   <p>　　There are many apple trees in a garden. They’re good friends. One day an old tree is ill. There are many pests in the tree. Leaves of the tree turn yellow. The old tree feels very sad and unwell. Another tree sends for a doctor for him. At first, they send for a pigeon, but she has no idea about it. Then they send for an oriole, and she can’t treat the old tree well. Then they send for a woodpecker. She is a good doctor. She pecks a hole in the tree and eats lots of pests. At last the old tree becomes better and better. Leaves turn green and green.</p>
+   <p>　　Today is Sunday! On Sundays, I usually play the flute.My father usually reads the newspaper. My motherusuallycleansthe house. Buttoday my mother is in bed. She is ill. My father has to do the housework. Now, he is cleaning the house. “Sam, can you help me?” “Yes, Dad!” Now, we’re washing the car. Where’s my sister, Amy? She is playing my flute. What a lucky girl!</p>
+   <p>　　One day a dog with a piece of meat in his mouth was crossing a plank over a stream. As he walked along,helookedintowater,andhesawhis reflection. He thought this was another dog carrying</p>
+   <p>　　a piece of meat. And he felt he would like to have two pieces. So he snapped at the reflection in the water, and of course, as he opened his mouth, the piece of meat disappeared quickly.</p>
+   <p>　　Tony is seven years old. He is an honest and polite boy. One day, it was Sunday. Tony, his sister and his mother stayed at home. He was watching TV and his sister was reading books. His mother was washing clothes. Just then, his father came back with a bag</p>
+   <p>　　to eat one. His mother gave him four and said, “Let’s sharethem.” “Whichpeardo youwant, Tony?” asked his mother. “The biggest one, mum.” “What?” said his mother, “You should be polite and want the smallest one.” “Should I tell a lie just to be polite, mum?”</p>
+   <p>　　There are many apple trees in a garden. They’re good friends. One day an old tree is ill. There are many pests in the tree. Leaves of the tree turn yellow. The old tree feels very sad and unwell. Another tree sends for a doctor for him. At first, they send for a pigeon, but she has no idea about it. Then they send for an oriole, and she can’t treat the old tree well. Then they send for a woodpecker. She is a good doctor. She pecks a hole in the tree and eats lots of pests. At last the old tree becomes better and better. Leaves turn green and green.</p>
+   <p>　　Today is Sunday! On Sundays, I usually play the flute.My father usually reads the newspaper. My motherusuallycleansthe house. Buttoday my mother is in bed. She is ill. My father has to do the housework. Now, he is cleaning the house. “Sam, can you help me?” “Yes, Dad!” Now, we’re washing the car. Where’s my sister, Amy? She is playing my flute. What a lucky girl!</p>
+   <p>　　One day a dog with a piece of meat in his mouth was crossing a plank over a stream. As he walked along,helookedintowater,andhesawhis reflection. He thought this was another dog carrying</p>
+   <p>　　a piece of meat. And he felt he would like to have two pieces. So he snapped at the reflection in the water, and of course, as he opened his mouth, the piece of meat disappeared quickly.</p>
+   <p>　　Tony is seven years old. He is an honest and polite boy. One day, it was Sunday. Tony, his sister and his mother stayed at home. He was watching TV and his sister was reading books. His mother was washing clothes. Just then, his father came back with a bag</p>
+   <p>　　to eat one. His mother gave him four and said, “Let’s sharethem.” “Whichpeardo youwant, Tony?” asked his mother. “The biggest one, mum.” “What?” said his mother, “You should be polite and want the smallest one.” “Should I tell a lie just to be polite, mum?”</p>
+   <p>　　There are many apple trees in a garden. They’re good friends. One day an old tree is ill. There are many pests in the tree. Leaves of the tree turn yellow. The old tree feels very sad and unwell. Another tree sends for a doctor for him. At first, they send for a pigeon, but she has no idea about it. Then they send for an oriole, and she can’t treat the old tree well. Then they send for a woodpecker. She is a good doctor. She pecks a hole in the tree and eats lots of pests. At last the old tree becomes better and better. Leaves turn green and green.</p>
+   <p>　　Today is Sunday! On Sundays, I usually play the flute.My father usually reads the newspaper. My motherusuallycleansthe house. Buttoday my mother is in bed. She is ill. My father has to do the housework. Now, he is cleaning the house. “Sam, can you help me?” “Yes, Dad!” Now, we’re washing the car. Where’s my sister, Amy? She is playing my flute. What a lucky girl!</p>
+   <p>　　One day a dog with a piece of meat in his mouth was crossing a plank over a stream. As he walked along,helookedintowater,andhesawhis reflection. He thought this was another dog carrying</p>
+   <p>　　a piece of meat. And he felt he would like to have two pieces. So he snapped at the reflection in the water, and of course, as he opened his mouth, the piece of meat disappeared quickly.</p>
+   <p>　　Tony is seven years old. He is an honest and polite boy. One day, it was Sunday. Tony, his sister and his mother stayed at home. He was watching TV and his sister was reading books. His mother was washing clothes. Just then, his father came back with a bag</p>
+   <p>　　to eat one. His mother gave him four and said, “Let’s sharethem.” “Whichpeardo youwant, Tony?” asked his mother. “The biggest one, mum.” “What?” said his mother, “You should be polite and want the smallest one.” “Should I tell a lie just to be polite, mum?”</p>
+   <img data-src="https://p.qqan.com/up/2022-11/20221114149434064.jpg" data-name="第一张图">
+   <p>　　Today is Susan’s birthday. She is nine years old. Her friends are in her home now. There is a birthday party in the evening. Look! Mary is listening to the music. And Tom is drinking orange juice. Jack and Sam are playing cards on the floor. Lily and Amy are watching TV. Someone is knocking at the door. It’s Henry. He brings a big teddy bear for Susan. The teddy bear is yellow. Susan is very happy. All the children are happy. They sing a birthday song for Susan.</p>
+   <p>　　It was a cold winter day.A farmer found a snake on the ground. It was nearly dead by cold. The Farmer was a kind man. Hepicked up thesnake carefully and put it under the coat. Soon the snake Began to move and it raised its mouth and bit the farmer. “Oh, My god!” said the farmer, “I save your life, but you thank me in that way. You must die.” Then he killed the snake with a stick. At last he died, too.</p>
+   <p>　　Two young trees are standing on the top of the hill. Their names are Tim and Alan.</p>
+   <img data-src="https://p.qqan.com/up/2022-11/202211111451135587.jpg" data-name="第二张图">
+   <p>　　One day, it’s sunny and warm. Some birds are singing in the trees. The wind blows, and the trees are talking. “What do you want to be when you grow up?’’ asks Tim. “I’m not sure. I think I want to be a chair or a desk.” answers Alan, “Maybe I want to be</p>
+   <p>　　a toy box or a baseball bat. I like children.”“What do you want to be when you grow up?” asks Alan. “Me?” says Tim, “I just want to be a tree. I want to be</p>
+   <img data-src="https://p.qqan.com/up/2022-11/20221111143042443.jpg" data-name="第三张图">
+   <img data-src="https://p.qqan.com/up/2022-11/20221181335165021.jpg" data-name="第四张图">
+   <p>　　a house for birds and spiders. I want to have many apples. And when it’s sunny and hot, people and animals can stand under me.”</p>
+   <p>　　Hong Kong is a nice place, especially in summer. JulyisahotmonthinHongKong.Butit’san excellent time for swimming. There is a beautiful beach at Repulse Bay (浅水湾). To get there, you can take a bus from Central. Lots of people go to the beach on Sundays and Saturdays. But if you go on a weekday, it is will be not so crowded.Visitors to Hongkong need passports. But people from many countries do not need visas. Hongkong is a nice place for holiday. There are many shops.</p>
+   <p>　　Water is very important for living things. Without water, there must be no life on the earth. All the plants and animals need water to drink, to cook food and to clean ourselves. Water is needed in farms, factories, offices, schools, families and many other places.</p>
+   
+   <script>
+      // 获取所有的img标签元素
+      const images = document.querySelectorAll('img')
+      // InterpObserver 生成观察器回调函数
+      const callback = (entries, observer) => {
+        console.log('????????~ 执行了一次callback');
+        console.log('????????~ entries:', entries);
+        console.log('????????~ observer:', observer);
+        entries.forEach(item => {
+          // 判断isIntersecting是否为true, 为true时说明交叉
+            if(item.isIntersecting) {
+              // 根据target属性获取当前元素
+              const image = item.target
+              // 获取元素自定义属性data-src
+              const data_src = image.getAttribute('data-src')
+              const data_name = image.getAttribute('data-name')
+              // 让处于交叉的img元素赋值src
+              image.setAttribute('src', data_src)
+              // 接触交叉观察
+              myObserver.unobserve(image)
+              console.log(`img(${data_name})标签处于可视区域-交叉`)
+            }
+        })
+      }
+      
+      // 调用构造函数 IntersectionObserver 生成观察器
+      const myObserver = new IntersectionObserver(callback)
+      
+      // 开始监听目标元素
+      images.forEach(image => {
+        myObserver.observe(image)
+      }) 
+   </script> 
+   <script>
+   function Cat(name, age) {
+     this.name = name
+     this.age = age
+     this.sayName = () => {
+        console.log('我是喵喵喵')
+     }
+  }
+  Cat.prototype.species = '动物';
+  Cat.prototype.say = function () {
+     console.log("Hello， 我是动物");
+  }
+  function cat1 () {}
+const cat = new Cat('sdasad', 24)
+console.log(cat.species); // 人类 
+console.log(cat.constructor.prototype, Cat.prototype)
+console.log(cat,cat.prototype, cat.__proto__)
+   </script>
+  </body>
+</html>

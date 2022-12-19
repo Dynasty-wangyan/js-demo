@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>依赖收集</title>
+</head>
+<body>
+   
+    <div id="app">
+         <h1>{{title}}</h1>
+         <p>{{content}}</p>
+         <h1>{{title}}</h1>
+         <p>{{content}}</p>
+         <button @click="setTitle">设置标题</button>
+         <button @click="setContent">设置内容</button>
+         <button @click="reset">重置</button>
+    </div>
+    <script type="module">
+      import {createApp, ref} from './js/createVue.js'
+        /********
+         *  依赖收集
+         * 30分钟
+         * vue Options Api
+         * vue composition Api
+         * 
+         * .value?
+         *  响应式？ => 一对多 -> 依赖收集
+         * ******/
+
+         createApp('#app', {
+            refs: {
+              title: ref('This is Title'),  // {value: ''}
+              content: ref('This is Content')
+            },
+            methods: {
+              setTitle() {
+                 this.title.value = '这是一个标题'
+              },
+              setContent() {
+                 this.content.value = '这是一个内容'
+              },
+              reset() {
+                this.title.$reset()
+                this.content.$reset()
+              }
+            }
+         })
+    </script>
+</body>
+</html>

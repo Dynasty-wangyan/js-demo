@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="myCanvas" width="300" height="300"></canvas>
+  <script>
+    // 获取 canvas 元素
+    var canvas = document.getElementById('myCanvas');
+  
+    // 获取 canvas 的绘图环境
+    var ctx = canvas.getContext('2d');
+  
+    // 绘制美女的头部
+    ctx.beginPath();
+    ctx.arc(150, 100, 50, 0, 2 * Math.PI);
+    ctx.stroke();
+  
+    // 绘制美女的眼睛
+    ctx.beginPath();
+    ctx.arc(140, 90, 5, 0, 2 * Math.PI);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(160, 90, 5, 0, 2 * Math.PI);
+    ctx.stroke();
+  
+    // 绘制美女的嘴巴
+    ctx.beginPath();
+    ctx.arc(150, 110, 10, 0, Math.PI);
+    ctx.stroke();
+  
+    // 绘制美女的身体
+    ctx.beginPath();
+    ctx.moveTo(150, 150);
+    ctx.lineTo(150, 250);
+    ctx.stroke();
+  
+    // 绘制美女的腿
+    ctx.beginPath();
+    ctx.moveTo(150, 250);
+    ctx.lineTo(120, 330);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(150, 250);
+    ctx.lineTo(180, 330);
+    ctx.stroke();
+  
+    // 绘制美女的手
+    ctx.beginPath();
+    ctx.moveTo(150, 180);
+    ctx.lineTo(90, 160);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(150, 180);
+    ctx.lineTo(210, 160);
+    ctx.stroke();
+  </script>
+  
+</html>
