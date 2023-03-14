@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#toolbarViewerRight, #toolbarSidebar, #viewFind, .splitToolbarButton, .toolbarButtonSpacer {
+/* #toolbarViewerRight, #toolbarSidebar, #viewFind, .splitToolbarButton, .toolbarButtonSpacer {
   display: none !important;
-}
+} */
 #pageNumber {
   background-color: transparent;
   border: none;
@@ -34,7 +34,7 @@
   right: 0;
   bottom: 0;
   overflow: hidden;
-  opacity: 0.2;
+  opacity: 0.6;
   line-height: 1;
 }
 
@@ -50,7 +50,7 @@
 .textLayer .highlight {
   margin: -1px;
   padding: 1px;
-  background-color: rgba(180, 0, 170, 1);
+  background-color: rgb(240, 244, 0);
   border-radius: 4px;
 }
 
@@ -71,7 +71,7 @@
 }
 
 .textLayer .highlight.selected {
-  background-color: rgba(0, 100, 0, 1);
+  background-color: rgb(248, 91, 0);
 }
 
 .textLayer ::-moz-selection {
@@ -770,7 +770,7 @@
   --field-color: rgba(6, 6, 6, 1);
   --field-bg-color: rgba(255, 255, 255, 1);
   --field-border-color: rgba(187, 187, 188, 1);
-  --findbar-nextprevious-btn-bg-color: rgba(227, 228, 230, 1);
+  --findbar-nextprevious-btn-bg-color: rgba(250, 250, 250, 1);
   --treeitem-color: rgba(0, 0, 0, 0.8);
   --treeitem-hover-color: rgba(0, 0, 0, 0.9);
   --treeitem-selected-color: rgba(0, 0, 0, 0.9);
@@ -1292,6 +1292,7 @@ html[dir="rtl"] .findbar .splitToolbarButton {
   height: 26px;
   border-top: 1px solid var(--field-border-color);
   border-bottom: 1px solid var(--field-border-color);
+  cursor: pointer;
 }
 
 .findbar .splitToolbarButton > .toolbarButton::before {
@@ -1519,6 +1520,7 @@ html[dir="rtl"] .splitToolbarButton > .toolbarButton {
   background: none;
   width: 28px;
   height: 28px;
+  cursor: pointer;
 }
 
 .overlayButton:hover,
@@ -1604,7 +1606,7 @@ html[dir="rtl"] .splitToolbarButtonSeparator {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-  cursor: default;
+  cursor: pointer;
   box-sizing: border-box;
 }
 
@@ -2105,12 +2107,12 @@ html[dir="rtl"] #numPages.toolbarLabel {
 .thumbnail {
   margin: 0 10px 5px;
 }
-html[dir="ltr"] .thumbnail {
+/* html[dir="ltr"] .thumbnail {
   float: left;
-}
-html[dir="rtl"] .thumbnail {
+} */
+/* html[dir="rtl"] .thumbnail {
   float: right;
-}
+} */
 
 #thumbnailView > a:last-of-type > .thumbnail {
   margin-bottom: 10px;
