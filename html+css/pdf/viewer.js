@@ -3427,9 +3427,8 @@ function webViewerClick(evt) {
   if (!PDFViewerApplication.secondaryToolbar.isOpen) {
     return;
   }
-
+  
   var appConfig = PDFViewerApplication.appConfig;
-
   if (PDFViewerApplication.pdfViewer.containsElement(evt.target) || appConfig.toolbar.container.contains(evt.target) && evt.target !== appConfig.secondaryToolbar.toggleButton) {
     PDFViewerApplication.secondaryToolbar.close();
   }
@@ -11835,7 +11834,6 @@ var PDFSidebar = /*#__PURE__*/function () {
       this.toggleButton.classList.add("toggled");
       this.toggleButton.setAttribute("aria-expanded", "true");
       this.outerContainer.classList.add("sidebarMoving", "sidebarOpen");
-
       if (this.active === _ui_utils.SidebarView.THUMBS) {
         this._updateThumbnailViewer();
       }
@@ -11912,7 +11910,7 @@ var PDFSidebar = /*#__PURE__*/function () {
     key: "_showUINotification",
     value: function _showUINotification() {
       var _this = this;
-
+    
       this.l10n.get("toggle_sidebar_notification2.title").then(function (msg) {
         _this.toggleButton.title = msg;
       });
